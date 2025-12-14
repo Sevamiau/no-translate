@@ -6,3 +6,15 @@ function prenventTrasnlation () {
         document.head.appendChild(meta);
     }
 };
+
+if (document.body) {
+    document.body.classList.add('notranslate');
+
+    document.documentElement.setAttribute('translate', 'no');
+};
+
+
+prenventTrasnlation();
+
+window.addEventListener('DOMContentLoaded', prenventTrasnlation);
+
