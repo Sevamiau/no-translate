@@ -1,22 +1,27 @@
-function prenventTrasnlation () {
-    console.log("Extension running.")
+function preventTranslation() {
+    console.log("Extension running.");
 
     if (!document.querySelector('meta[name="google"][content="notranslate"]')) {
         const meta = document.createElement('meta');
         meta.name = "google";
-        meta.content = "notransalte";
-        document.head.appendChild(meta);
+        meta.content = "notranslate";
+
+        if (document.head) {
+            document.head.appendChild(meta);
+        } else {
+            document.documentElement.appendChild(meta);
+        }
     }
-};
 
-if (document.body) {
-    document.body.classList.add('notranslate');
+    if (document.documentElement) {
+        document.documentElement.setAttribute('translate', 'no');
+    }
 
-    document.documentElement.setAttribute('translate', 'no');
-};
+    if (document.body) {
+        document.body.classList.add('notranslate');
+    }
+}
 
+preventTranslation();
 
-prenventTrasnlation();
-
-window.addEventListener('DOMContentLoaded', prenventTrasnlation);
-
+window.addEventListener('DOMContentLoaded', preventTranslation);
