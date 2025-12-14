@@ -1,4 +1,6 @@
 function prenventTrasnlation () {
+    console.log("Extension running.")
+
     if (!document.querySelector('meta[name="google"][content="notranslate"]')) {
         const meta = document.createElement('meta');
         meta.name = "google";
