@@ -16,7 +16,7 @@ The extension runs a script immediately when a page starts loading (`document_st
 ### Technical Highlight
 The script includes a robust fallback mechanism. Since it runs **immediately**, the `<head>` or `<body>` tags often do not exist yet. The script intelligently attaches the meta tag to the root `<html>` element if the head is missing, ensuring no crash occurs during fast page loads.
 
-## 📂 Project Structure
+## Project Structure
 
 no-translate-extension/
 ├── manifest.json   # Configuration (Manifest V3)
