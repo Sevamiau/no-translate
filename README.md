@@ -18,10 +18,12 @@ The script includes a robust fallback mechanism. Since it runs **immediately**, 
 
 ## Project Structure
 
+```
 no-translate-extension/
 ├── manifest.json   # Configuration (Manifest V3)
 ├── content.js      # The logic script
 └── README.md       # Documentation
+```
 
 # Installation
 Since this is a custom extension, you will install it via "Developer Mode":
