@@ -1,23 +1,17 @@
 function preventTranslation() {
-    console.log("Extension running.");
-
     if (!document.querySelector('meta[name="google"][content="notranslate"]')) {
         const meta = document.createElement('meta');
         meta.name = "google";
         meta.content = "notranslate";
-
-        if (document.head) {
-            document.head.appendChild(meta);
-        } else {
-            document.documentElement.appendChild(meta);
-        }
+        (document.head || document.documentElement).appendChild(meta);
     }
 
-    if (document.documentElement) {
+    // Add HTML attribute (for Firefox)
+    if (document.documentElement && document.documentElement.getAttribute('translate') !== 'no') {
         document.documentElement.setAttribute('translate', 'no');
     }
 
-    if (document.body) {
+    if (document.body && !document.body.classList.contains('notranslate')) {
         document.body.classList.add('notranslate');
     }
 }
@@ -25,3 +19,6 @@ function preventTranslation() {
 preventTranslation();
 
 window.addEventListener('DOMContentLoaded', preventTranslation);
+
+const observer = new MutationObserver(preventTranslation);
+observer.observe(document.documentElement, { attributes: true, childList: true, subtree: false });
